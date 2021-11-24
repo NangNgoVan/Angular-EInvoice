@@ -1,0 +1,26 @@
+<div class="navbar navbar-default navbar-xs" id="navbar-second">
+    <ul class="nav navbar-nav no-border visible-xs-block">
+        <li><a class="text-center collapsed" data-toggle="collapse" data-target="#navbar-second-toggle"><i class="icon-circle-down2"></i></a></li>
+    </ul>
+
+    <div class="navbar-collapse collapse" id="navbar-second-toggle">
+        <ul class="nav navbar-nav">
+            <li ui-sref-active="active" ng-repeat="item in $ctrl.items" ng-class="{'dropdown': item.subItems.length > 0}">
+                <a ui-sref="{{item.name}}" ng-if="!item.subItems || item.subItems.length === 0" class="legitRipple color-red"><i class="{{item.icon}} color-red"></i> {{item.label}}</a>
+
+                <a ng-if="item.subItems.length > 0" href="javascript:void(0)" class="dropdown-toggle legitRipple" data-toggle="dropdown"
+                    aria-expanded="false"><i class="{{item.icon}}"></i> {{item.label}} <span class="caret"></span></a>
+                <ul ng-if="item.subItems.length > 0" class="dropdown-menu width-250">
+                    <li ui-sref-active="active" ng-repeat="subItem in item.subItems" ng-class="{'dropdown-submenu': subItem.subItems.length > 0}">
+                        <a ui-sref="{{subItem.name}}" ng-if="!subItem.subItems || subItem.subItems.length === 0"><i class="{{subItem.icon}}"></i> {{subItem.label}}</a>
+
+                        <a ng-if="subItem.subItems.length > 0" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown"><i class="{{subItem.icon}}"></i> {{subItem.label}}</a>
+                        <ul ng-if="subItem.subItems.length > 0" class="dropdown-menu">
+                            <li ng-repeat="s in subItem.subItems"><a ui-sref="{{s.name}}"><i class="{{s.icon}}"></i> {{s.label}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

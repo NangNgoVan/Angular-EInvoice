@@ -1,0 +1,24 @@
+<div class="sidebar-fixed">
+    <div class="sidebar-content">
+        <div class="sidebar-category sidebar-category-visible">
+            <div class="category-content no-padding">
+                <ul class="navigation navigation-main navigation-accordion">
+                    <li class="dropdown" ng-repeat="item in $ctrl.items">
+                        <!-- <a class="dropdown-toggle" data-toggle="dropdown" ui-sref="{{item.code}}" ui-sref-active="active"> -->
+                        <a ui-sref="{{item.code}}" ui-sref-active="active">
+                                <i class="{{item.icon}}" ng-if="item.icon"></i> 
+                                <span>{{item.name}}</span>
+                                <span ng-if="item.subItems" class="caret pull-right"></span>
+                           </a>
+                        <!-- <ul class="dropdown-menu"> -->
+                        <ul>
+                            <li ng-repeat="subItem in item.subItems" ui-sref-active="active">
+                                <a href="{{subItem.code}}"><i class="{{subItem.icon}}" ng-if="subItem.icon"></i><span>{{subItem.name}}</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

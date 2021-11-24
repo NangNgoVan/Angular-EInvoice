@@ -1,0 +1,275 @@
+    body{
+    font-size: 13px;
+    font-family: 'Open Sans', Arial, sans-serif;
+    background-color: #eeeded;
+    color: #333333;
+    line-height: 24px;
+    word-spacing: 1.3px;
+}
+.bg-red{
+    background-color:#E60000;
+}
+.color-red{
+    color: #ff0000;
+}
+.color-white{
+    color: #fff;
+}
+.loader {
+    position: absolute; 
+    top: 40%;
+    left: 45%;
+    font-size: 24px;
+    display: block;
+    text-align: center;
+    font-weight: 900
+}
+    
+h1,h2,h3,h4,h5,h6{
+        color: #333 !important;
+    }
+
+.text-justify{
+        text-align: justify;
+    }
+.ul-customer-label{  
+    list-style: none;
+    list-style-image: url("../images/if-label.png");
+}
+
+.ul-customer-tick{  
+    list-style: none;
+    list-style-image: url("../images/if-tick.png");
+}
+/* .content-wrapper { 
+    width: 78%;
+}   */
+
+
+  /* @media (min-width: 769px){
+    .content-wrapper {
+     width: 78% !important; 
+    }
+}  */
+
+ /* .sidebar{
+    width:100%;
+}    */
+ /* @media (min-width: 769px){
+    .sidebar {
+    display: table-cell;
+    }
+} */
+ /* Classes 
+.show {
+  display: block !important;
+}
+.hidden {
+  display: none !important;
+}
+.invisible {
+  visibility: hidden;
+}
+
+ Usage as mixins 
+.element {
+  .show();
+}
+.another-element {
+  .hidden();
+} */
+
+.panel-body-custom{
+    padding-top: 0px !important;
+}
+.panel-heading{
+    border-bottom:1px solid #ddd;
+}
+
+.navigation > li > a {
+    border-bottom-color: #000 !important;
+}
+.footer{
+    position:relative;
+    left: 0;
+    right: 0;
+}
+.panel-body{
+    padding-top:20px !important;
+}
+hr{
+    padding: 0;
+    margin: 1px;
+}
+.bs-callout-info {
+    background-color: #f4f8fa;
+    border-color: #5bc0de;
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border-left: 3px solid #e9422e;
+}
+
+.table.table-custom > thead > tr > th,
+.table.table-custom > tbody > tr > th,
+.table.table-custom > tfoot > tr > th,
+.table.table-custom > thead > tr > td,
+.table.table-custom > tbody > tr > td,
+.table.table-custom > tfoot > tr > td {
+    padding: 6px 8px;
+}
+
+.table.table-xss > thead > tr > th,
+.table.table-xss > tbody > tr > th,
+.table.table-xss > tfoot > tr > th,
+.table.table-xss > thead > tr > td,
+.table.table-xss > tbody > tr > td,
+.table.table-xss > tfoot > tr > td {
+    padding: 4px 8px;
+}
+
+/*.btn.btn-xss {
+    
+}*/
+
+.form-group label.error {
+  color: #F44336;
+  margin: 0;
+    padding: 5px;
+}
+
+.form-group label.error::before {
+    content: '\ed63';
+    font-family: 'icomoon';
+    margin-right: 5px;
+    vertical-align: middle;
+}
+#startNumber-error, #endNumber-error{
+    color: #F44336;
+}
+
+.label-custom {
+    margin-bottom: 0;
+    margin-left: 15px;
+}
+
+.panel-custom > .panel-heading {
+    padding: 10px 16px;
+}
+
+.form-group-custom {
+    margin-bottom: 5px;
+}
+
+.form-group-custom .table-condensed > thead > tr > th,
+.form-group-custom .table-condensed > tbody > tr > th,
+.form-group-custom .table-condensed > tfoot > tr > th,
+.form-group-custom .table-condensed > thead > tr > td,
+.form-group-custom .table-condensed > tbody > tr > td,
+.form-group-custom .table-condensed > tfoot > tr > td {
+    padding: 8px 9px;
+}
+
+.page-title-custom {
+    padding: 10px 36px 10px 0;
+}
+
+.panel-heading {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.padding-5 {
+    padding: 5px !important;
+}
+
+.font-13 {
+    font-size: 13px;
+}
+
+.panel, .table-responsive {
+    position: relative;
+}
+.panel .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 50;
+    background: rgba(255,255,255,0.7);
+    border-radius: 3px;
+}
+
+.panel .overlay > .fa {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: -15px;
+    color: #000;
+    font-size: 30px;
+}
+
+.form-horizontal:focus{
+    outline: 0;
+}
+.form-horizontal .form-group:focus{
+    outline: 0;
+}
+
+.no-border {
+    border: none !important;
+}
+
+.dropdown-menu {
+    width: 100%;
+}
+
+.panel > .table-responsive > .table-bordered-custom > thead > tr > th, 
+.panel > .table-bordered-custom > thead > tr > th, 
+.panel > .table-responsive > .table-bordered-custom > thead > tr > td, 
+.panel > .table-bordered-custom > thead > tr > td {
+    border: 1px solid #ddd;
+}
+
+.table-width {
+    width: 2000px;
+}
+
+.table-width > thead > tr > th {
+    text-align: center;
+}
+
+.table-no-padding > tbody > tr > td {
+    padding: 0;
+}
+
+.scrollbar {
+    overflow: auto;
+}
+
+.scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 3px;
+  background-color: #fff;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  /*-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);*/
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: #3f51b5;
+}
+
+.has-feedback label ~ .form-control-feedback {
+    top: 0;
+}
+
+#serialsinvoicetemplate {
+    text-transform: uppercase;
+}
+

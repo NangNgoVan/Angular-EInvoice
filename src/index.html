@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="root">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MIC - Tổng công ty Cổ phần Bảo hiểm Quân đội</title>
+	<link rel="icon" type="image/png" href="images/logo_mic.png">
+	<!-- build:css css/style.css -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
+	<link href="assets/css/icons/font-awesome/font-awesome.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/icons/icomoon/styles.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+
+	<link href="assets/css/loading-bar.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/hint.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/angular-ui-notification.css" rel="stylesheet" type="text/css">
+
+	<link href="assets/css/core.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/components.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/colors.css" rel="stylesheet" type="text/css">
+	<link href="assets/css/custom.css" rel="stylesheet" type="text/css">
+
+	<!-- endbuild -->
+</head>
+
+<body>
+	<root>
+		<div class="box-spinner">
+			<div class="spinner-cube sk-folding-cube" data-initialize="loader" data-delay="500">
+				<div class="sk-cube1 sk-cube"></div>
+				<div class="sk-cube2 sk-cube"></div>
+				<div class="sk-cube4 sk-cube"></div>
+				<div class="sk-cube3 sk-cube"></div>
+			</div>
+		</div>
+	</root>
+
+	<!-- build:js js/script.js -->
+	<script src="assets/js/jquery.js" type="text/javascript"></script>
+	<script src="assets/js/bootstrap.js" type="text/javascript"></script>
+	<script src="assets/js/moment-with-locales.min.js" type="text/javascript"></script>
+	<script src="assets/js/nicescroll.min.js" type="text/javascript"></script>
+	<script src="assets/js/drilldown.js" type="text/javascript"></script>
+	<script src="assets/js/ripple.min.js" type="text/javascript"></script>
+	<script src="assets/js/jquery.validate.js" type="text/javascript"></script>
+	<script src="assets/js/app.js" type="text/javascript"></script>
+	<script src="assets/js/FileSaver.js" type="text/javascript"></script>
+
+	<script src="assets/js/angular.js" type="text/javascript"></script>
+	<script src="assets/js/angular-sanitize.js" type="text/javascript"></script>
+	<script src="assets/js/ui-bootstrap-tpls-2.5.0.js" type="text/javascript"></script>
+	<script src="assets/js/angular-ui-router.js" type="text/javascript"></script>
+	<script src="assets/js/angular-mocks.js" type="text/javascript"></script>
+	<script src="assets/js/loading-bar.js" type="text/javascript"></script>
+	<script src="assets/js/angular-storage.js" type="text/javascript"></script>
+	<script src="assets/js/angular-animate.js" type="text/javascript"></script>
+	<script src="assets/js/angular-ui-notification.js" type="text/javascript"></script>
+
+
+	<!--app-->
+	<script src="app/root.module.js" type="text/javascript"></script>
+	<script src="app/root.component.js" type="text/javascript"></script>
+	<script src="app/root.controller.js" type="text/javascript"></script>
+	<script src="app/templates.js" type="text/javascript"></script>
+	<script src="app/mock/mocks.js" type="text/javascript"></script>
+
+	<!--services-->
+	<script src="app/services/service.module.js" type="text/javascript"></script>
+	<script src="app/services/http.service.js" type="text/javascript"></script>
+	<script src="app/services/color.service.js" type="text/javascript"></script>
+	<script src="app/services/constant.service.js" type="text/javascript"></script>
+	<script src="app/services/cache.service.js" type="text/javascript"></script>
+	<script src="app/services/print.service.js" type="text/javascript"></script>
+
+	<!--common-->
+	<script src="app/common/common.module.js" type="text/javascript"></script>
+	<script src="app/common/auth/auth.module.js" type="text/javascript"></script>
+	<script src="app/common/auth/httpInterceptor.js" type="text/javascript"></script>
+	<script src="app/common/auth/auth.service.js" type="text/javascript"></script>
+	<script src="app/common/auth/login/login.component.js" type="text/javascript"></script>
+	<script src="app/common/auth/login/login.controller.js" type="text/javascript"></script>
+	<script src="app/common/header/header.service.js" type="text/javascript"></script>
+	<script src="app/common/header/header.module.js" type="text/javascript"></script>
+	<script src="app/common/header/nav-bar/nav-bar.component.js" type="text/javascript"></script>
+	<script src="app/common/header/nav-bar/nav-bar.controller.js" type="text/javascript"></script>
+	<script src="app/common/header/top-bar/top-bar.component.js" type="text/javascript"></script>
+	<script src="app/common/header/top-bar/top-bar.controller.js" type="text/javascript"></script>
+	<script src="app/common/footer/footer.component.js" type="text/javascript"></script>
+	<script src="app/common/footer/footer.controller.js" type="text/javascript"></script>
+	<script src="app/common/side-bar/side-bar.component.js" type="text/javascript"></script>
+	<script src="app/common/side-bar/side-bar.controller.js" type="text/javascript"></script>
+	
+	<script src="app/common/directives/ng-number-only.js" type="text/javascript"></script>
+	<script src="app/common/directives/ng-selectize.js" type="text/javascript"></script>
+	
+	<!--components-->
+
+	<script src="app/components/account/account.module.js" type="text/javascript"></script>
+	<script src="app/components/account/accounts/accounts.component.js" type="text/javascript"></script>
+	<script src="app/components/account/accounts/accounts.controller.js" type="text/javascript"></script> 
+	<script src="app/components/account/account/account.component.js" type="text/javascript"></script>
+	<script src="app/components/account/account/account.controller.js" type="text/javascript"></script> 
+	<script src="app/components/account/change-password/change-password.component.js" type="text/javascript"></script>
+	<script src="app/components/account/change-password/change-password.controller.js" type="text/javascript"></script> 
+	<script src="app/components/account/account.service.js" type="text/javascript"></script>
+
+	<script src="app/components/components.module.js" type="text/javascript"></script>
+	<script src="app/components/dashboard/dashboard.component.js" type="text/javascript"></script>
+	<script src="app/components/dashboard/dashboard.controller.js" type="text/javascript"></script> 
+	<script src="app/components/dashboard/dashboard.service.js" type="text/javascript"></script>
+	<script src="app/components/invoice-search/invoice-search.component.js" type="text/javascript"></script>
+	<script src="app/components/invoice-search/invoice-search.controller.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-search/invoice-search.service.js" type="text/javascript"></script> 
+
+	<script src="app/components/invoice-contact/invoice-contact.component.js" type="text/javascript"></script>
+	<script src="app/components/invoice-contact/invoice-contact.controller.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-introduce/invoice-introduce.component.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-introduce/invoice-introduce.controller.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-about/invoice-about.component.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-about/invoice-about.controller.js" type="text/javascript"></script> 
+
+	<script src="app/components/invoice-advantage/invoice-advantage.component.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-advantage/invoice-advantage.controller.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-typical-customer-list/invoice-typical-customer-list.component.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-typical-customer-list/invoice-typical-customer-list.controller.js" type="text/javascript"></script> 
+
+	<script src="app/components/invoice-legal-basis/invoice-legal-basis.component.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-legal-basis/invoice-legal-basis.controller.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-release-procedure/invoice-release-procedure.component.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-release-procedure/invoice-release-procedure.controller.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-condition/invoice-condition.component.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-condition/invoice-condition.controller.js" type="text/javascript"></script> 
+
+	<script src="app/components/invoice-question/invoice-question.component.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-question/invoice-question.controller.js" type="text/javascript"></script> 
+		
+	<script src="app/components/invoice-reference-guide/invoice-reference-guide.component.js" type="text/javascript"></script> 
+	<script src="app/components/invoice-reference-guide/invoice-reference-guide.controller.js" type="text/javascript"></script>  
+	<!-- endbuild -->
+</body>
+
+</html>

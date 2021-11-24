@@ -1,0 +1,105 @@
+<div class="panel panel-flat border-top-xlg border-top-green">
+  <div class="panel-heading">
+    <h6 class="panel-title text-semibold text-indigo">
+      <b>Danh sách hóa đơn</b>
+    </h6>
+  </div>
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-xs-3 col-sm-2 col-md-1">
+        <select class="form-control" ng-model="$ctrl.paging.size" ng-change="$ctrl.getList()" ng-options="size for size in $ctrl.sizes"></select>
+      </div>
+      <div class="col-xs-9 col-sm-offset-4 col-sm-6 col-md-offset-7 col-md-4">
+        <div class="has-feedback has-feedback-right">
+          <input type="text" class="form-control" placeholder="Tìm kiếm" ng-model="$ctrl.paging.q" ng-model-options="{ debounce: 1000 }"
+            ng-change="$ctrl.getList()" />
+          <div class="form-control-feedback">
+            <i class="icon-search4 text-muted text-size-base"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-xs">
+      <thead>
+        <tr class="info">
+          <th style="width: 130px;">
+            <b>Loại Hóa đơn</b>
+          </th>
+          <th style="width: 150px;">
+            <b>Mẫu Hóa đơn</b>
+          </th>
+          <th style="width: 100px;">
+            <b>Ký hiệu</b>
+          </th>
+          <th style="width: 100px;">
+            <b>Số</b>
+          </th>
+          <th style="width: 150px;">
+            <b>Ngày hóa đơn</b>
+          </th>
+          <th>
+            <b>Tên người mua</b>
+          </th>
+          <th style="width: 100px;">
+            <b>Trạng thái</b>
+          </th>
+          <th style="width: 150px;">
+            <b>#</b>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="invoice in $ctrl.invoices track by $index">
+          <td>{{invoice.invoiceTypeCode}}</td>
+          <td>{{invoice.templateNo}}</td>
+          <td>{{invoice.serialNo}}</td>
+          <td>{{invoice.invoiceNo}}</td>
+          <td>{{invoice.invoiceDate | date:'dd/MM/yyyy'}}</td>
+          <td>{{invoice.buyerFullName}}</td>
+          <td>
+            <span class="label {{$ctrl.colorService.colorInvoiceStatus(invoice.invoiceStatus)}}">{{$ctrl.colorService.invoiceStatusName(invoice.invoiceStatus)}}</span>
+          </td>
+          <td ng-if="invoice.signStatus !== 'DaKy'">
+            Hóa đơn chưa ký
+          </td>
+          <td ng-if="invoice.signStatus === 'DaKy'">
+            <button ng-click="$ctrl.exportPdf(invoice.sellerTaxCode, invoice.id)" type="button" class="btn btn-link text-orange btn-xs no-padding hint--left" aria-label="In hóa đơn pdf"><i class="icon-file-pdf"></i></button>
+            <button ng-click="$ctrl.exportXml(invoice.sellerTaxCode, invoice.id)" type="button" class="btn btn-link text-orange btn-xs no-padding hint--left" aria-label="In hóa đơn xml"><i class="icon-embed2"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="overlay" ng-if="$ctrl.loading">
+      <i class="fa fa-spinner text-indigo fa-spin"></i>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="row visible-sm-block visible-xs-block">
+      <div class="col-sm-6 text-center">
+        <p class="form-control-static">Từ {{($ctrl.paging.page - 1) * $ctrl.paging.size + 1}} đến {{$ctrl.paging.page * $ctrl.paging.size > $ctrl.totalItems
+          ? $ctrl.totalItems : $ctrl.paging.page * $ctrl.paging.size}} của {{$ctrl.totalItems}} kết quả
+        </p>
+      </div>
+      <div class="col-sm-6 text-center">
+        <ul uib-pagination total-items="$ctrl.totalItems" ng-model="$ctrl.paging.page" max-size="2" class="pagination pagination-flat pagination-rounded pagination-sm"
+          boundary-links="true" force-ellipses="true" items-per-page="$ctrl.paging.size" next-text="&rsaquo;" last-text="&raquo;"
+          first-text="&laquo;" previous-text="&lsaquo;" ng-change="$ctrl.getList()"></ul>
+      </div>
+    </div>
+
+    <div class="row hidden-sm hidden-xs">
+      <div class="col-md-6">
+        <p class="form-control-static">Từ {{($ctrl.paging.page - 1) * $ctrl.paging.size + 1}} đến {{$ctrl.paging.page * $ctrl.paging.size > $ctrl.totalItems
+          ? $ctrl.totalItems : $ctrl.paging.page * $ctrl.paging.size}} của {{$ctrl.totalItems}} kết quả
+        </p>
+      </div>
+      <div class="col-md-6 text-right">
+        <ul uib-pagination total-items="$ctrl.totalItems" ng-model="$ctrl.paging.page" max-size="2" class="pagination pagination-flat pagination-rounded pagination-sm"
+          boundary-links="true" force-ellipses="true" next-text="&rsaquo;" last-text="&raquo;" first-text="&laquo;" previous-text="&lsaquo;"
+          items-per-page="$ctrl.paging.size" ng-change="$ctrl.getList()"></ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,120 @@
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title page-title-custom">
+            <h4><a ui-sref="account.list"><i class="icon-arrow-left52 position-left"></i></a>
+                <span ng-if="!$ctrl.isEdit">Tạo tài khoản</span>
+                <span ng-if="$ctrl.isEdit">Sửa tài khoản {{$ctrl.account.userName}}</span>
+            </h4>
+            <ul class="breadcrumb breadcrumb-caret position-right">
+                <li><a ui-sref="dashboard">Trang chủ</a></li>
+                <li><a ui-sref="account.list">Tài khoản</a></li>
+                <li ng-if="!$ctrl.isEdit" class="active">Tạo tài khoản</li>
+                <li ng-if="$ctrl.isEdit" class="active">Sửa tài khoản</li>
+            </ul>
+        </div>
+        <div class="heading-elements not-collapsible">
+            <div class="heading-btn-group">
+                <button type="button" ng-click="$ctrl.save()" class="btn bg-success btn-labeled heading-btn legitRipple"><b><i class="icon-floppy-disk"></i></b> Lưu</button>
+                <!-- <button ng-if="$ctrl.checkPermisson('add', 'edit')" type="button" ng-click="$ctrl.save()" class="btn bg-success btn-labeled heading-btn legitRipple"><b><i class="icon-floppy-disk"></i></b> Lưu</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel panel-white">
+    <div class="panel-body">
+        <form id="accountForm" class="form-horizontal">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="form-group form-group-custom" ng-if="!$ctrl.account.id">
+                        <label class="col-sm-4 control-label">Tên đăng nhập</label>
+                        <div class="col-sm-8">
+                            <input name="accountName" type="text" class="form-control" ng-model="$ctrl.account.userName" data-rule-required="true" data-msg-required="Phải nhập Tên đăng nhập"
+                                data-rule-maxlength='50' data-msg-maxlength='giới hạn chỉ 50 ký tự'>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group form-group-custom">
+                        <label class="col-sm-4 control-label">Tên đầy đủ</label>
+                        <div class="col-sm-8">
+                            <input name="fullName" type="text" class="form-control" ng-model="$ctrl.account.fullName" data-rule-required="true" data-msg-required="Phải nhập Tên đầy đủ"
+                                data-rule-maxlength='50' data-msg-maxlength='giới hạn chỉ 50 ký tự'>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group form-group-custom" ng-if="!$ctrl.account.id">
+                        <label class="col-sm-4 control-label">Mật khẩu</label>
+                        <div class="col-sm-8">
+                            <input type="password" class="form-control" ng-model="$ctrl.account.password" data-rule-required="true" data-msg-required="Phải nhập Mật khẩu"
+                                data-rule-maxlength='20' data-msg-maxlength='giới hạn chỉ 20 ký tự'>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-group-custom">
+                        <label class="col-sm-4 control-label">Tài khoản ERP</label>
+                        <div class="col-sm-8">
+                            <input name="erpAccount" type="text" class="form-control" ng-model="$ctrl.account.erpAccount" data-rule-maxlength='50' data-msg-maxlength='giới hạn chỉ 50 ký tự'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr/>
+            <h5><i class="icon-user-tie"></i> Phân quyền</h5>
+            <div class="tabbable">
+                <ul class="nav nav-tabs nav-tabs-highlight nav-justified">
+                    <li ng-class="{'active': $ctrl.currentTab === 1}"><a href="javascript:void(0)" ng-click="$ctrl.selectTabRole()" data-toggle="tab" class="legitRipple"><i class="icon-users4"></i> Nhóm quyền</a></li>
+                    <li ng-class="{'active': $ctrl.currentTab === 2}"><a href="javascript:void(0)" ng-click="$ctrl.selectTabTemplate()" data-toggle="tab" class="legitRipple"><i class="icon-file-empty"></i> Mẫu hóa đơn</a></li>
+                    <li ng-class="{'active': $ctrl.currentTab === 3}"><a href="javascript:void(0)" ng-click="$ctrl.selectTabCertificate()" data-toggle="tab" class="legitRipple"><i class="icon-key"></i> Chứng thư số</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div class="tab-pane" ng-class="{'active': $ctrl.currentTab === 1}">
+                        <div class="row">
+                            <div class="col-xs-6" ng-repeat="role in $ctrl.roles">
+                                <div class="checkbox">
+                                    <label>
+                                        <div class="checker border-primary-600 text-primary-800">
+                                            <span ng-class="{'checked': role.selected}"><input type="checkbox" ng-model="role.selected" class="control-primary" ng-change="!role.selected"></span>
+                                        </div>
+                                        {{role.roleName}}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" ng-class="{'active': $ctrl.currentTab === 2}">
+                        <div class="col-md-6" ng-repeat="template in $ctrl.templates">
+                            <div class="checkbox">
+                                <label>
+                                    <div class="checker border-primary-600 text-primary-800">
+                                        <span ng-class="{'checked': template.selected}"><input type="checkbox" ng-model="template.selected" class="control-primary" ng-change="!template.selected"></span>
+                                    </div>
+                                    {{template.name}} - {{template.number}} - {{template.serial}}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane" ng-class="{'active': $ctrl.currentTab === 3}">
+                        <div class="checkbox" ng-repeat="certificate in $ctrl.certificates">
+                            <label>
+                                <div class="checker border-primary-600 text-primary-800">
+                                    <span ng-class="{'checked': certificate.selected}"><input type="checkbox" ng-model="certificate.selected" class="control-primary" ng-change="!certificate.selected"></span>
+                                </div>
+                                {{certificate.subjectName}}
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="overlay" ng-if="$ctrl.loading">
+        <i class="fa fa-spinner text-indigo fa-spin"></i>
+    </div>
+</div>

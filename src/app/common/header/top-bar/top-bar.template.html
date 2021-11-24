@@ -1,0 +1,55 @@
+<div class="navbar navbar-inverse bg-green">
+    <div class="navbar-header">
+        <a class="navbar-brand" ui-sref="dashboard">
+                <i class="fa fa-home"></i>
+                <!-- <b>{{$ctrl.accountInfo.organizationFullName}}</b> -->
+                {{$ctrl.accountInfo.fullName}}
+            </a>
+
+        <ul class="nav navbar-nav pull-right visible-xs-block">
+            <li><a data-toggle="collapse" data-target="#navbar-mobile" class="collapsed" aria-expanded="false"><i class="icon-tree5"></i></a></li>
+            <li><a class="sidebar-mobile-main-toggle"><i class="icon-paragraph-justify3"></i></a></li>
+        </ul>
+    </div>
+
+    <div class="navbar-collapse collapse" id="navbar-mobile" aria-expanded="false" style="height: 1px;">
+        <ul class="nav navbar-nav">
+            <!-- <li><a href="http://hoadondientulagi.vn/vi/"><i class="icon-google-plus"></i></a></li>
+
+            <li><a href="http://hoadondientulagi.vn/vi/"><i class="icon-twitter"></i></a></li>
+
+            <li><a href="https://www.facebook.com/PhanMemKeToanMienPhi/"><i class="icon-facebook2"></i></a></li> -->
+        </ul>
+
+        <ul class="nav navbar-nav navbar-right">
+            <!-- <li>
+					<a href="#">
+						<i class="icon-cog3"></i>
+						<span class="visible-xs-inline-block position-right">Icon link</span>
+					</a>						
+				</li> -->
+            <li><a ui-sref="dashboard"><b>TRA CỨU HÓA ĐƠN</b></a></li>
+            <li ng-if="$ctrl.accountInfo"><a ui-sref="invoice-search"><b>TÌM KIẾM HÓA ĐƠN</b></a></li>
+            <!-- <li><a href="http://hoadondientulagi.vn/vi/dang-ky-su-dung-hoa-don-dien-tu/"><b>ĐĂNG KÝ DÙNG THỬ</b></a></li> -->
+            <li><a ui-sref="invoice-contact"><b>LIÊN HỆ</b></a></li>
+            <li ng-if="!$ctrl.accountInfo"><a ui-sref="auth.login"><b>ĐĂNG NHẬP</b></a></li>
+			<li class="dropdown dropdown-user">
+				<a class="dropdown-toggle" data-toggle="dropdown">
+						<img src="images/logo_mic.png" alt="" style="border-radius: 0">
+						<!-- <span>{{$ctrl.accountInfo.fullName}}</span> -->
+						<!--<i class="caret"></i>-->
+					</a>
+
+				<ul ng-if="$ctrl.accountInfo" class="dropdown-menu dropdown-menu-right">
+					<!--<li><a href="#"><i class="icon-user-plus"></i> My profile</a></li>
+					<li><a href="#"><i class="icon-coins"></i> My balance</a></li>
+					<li><a href="#"><span class="badge badge-warning pull-right">58</span> <i class="icon-comment-discussion"></i> Messages</a></li>
+					<li class="divider"></li>
+					<li><a href="#"><i class="icon-cog5"></i> Account settings</a></li>-->
+					<li><a ui-sref="account.changePassword"><i class="icon-cog5"></i> Đổi mật khẩu</a></li>
+					<li><a href="javascript:void(0)" ng-click="$ctrl.logout()"><i class="icon-switch2"></i><span>Đăng xuất</span></a></li>
+				</ul>
+			</li>
+        </ul>
+    </div>
+</div>

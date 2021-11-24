@@ -1,0 +1,97 @@
+<div class="panel panel-flat border-top-xlg border-top-green">
+  <div class="panel-heading">
+    <h6 class="panel-title text-semibold text-indigo">
+      <b>Tra cứu hóa đơn điện tử</b>
+    </h6>
+  </div>
+
+  <div class="panel-body">
+    <form id="searchInvoice" class="form-horizontal">
+      <div class="form-group">
+        <label class="control-label col-lg-3 text-right color-red font-bold">
+          <b>Mã số thuế đơn vị bán (*)</b>
+        </label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" maxlength="14" placeholder="Nhập mã số thuế..." ng-model="$ctrl.taxCode" />
+          <label class="validation-error-label" ng-if="!$ctrl.taxCode && $ctrl.hasError">Bạn chưa nhập mã số thuế</label>
+        </div>
+        <label class="control-label col-lg-2">Tối đa 13 ký tự</label>
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-lg-3 text-right color-red font-bold">
+          <b>Số bảo mật (*)</b>
+        </label>
+        <div class="col-lg-7">
+          <input type="text" class="form-control" placeholder="Nhập số bảo mật..." ng-model="$ctrl.id" />
+          <label class="validation-error-label" ng-if="!$ctrl.id && $ctrl.hasError">Bạn chưa nhập số bảo mật</label>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+      <div class="form-group">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-7">
+          <div class="text-left">
+            <button type="button" class="btn btn-success" ng-click="$ctrl.getInvoice()">
+              <i class="glyphicon glyphicon-ok position-left"></i>Tra cứu </button>
+          </div>
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="panel panel-flat border-top-xlg border-top-green" ng-if="$ctrl.invoice.id">
+  <div class="panel-heading">
+    <h6 class="panel-title text-semibold text-indigo">
+      <b>Kết quả tra cứu</b>
+    </h6>
+  </div>
+  <div class="table-responsive">
+    <table class="table table-xs">
+      <thead>
+        <tr class="info">
+          <th style="width: 130px;">
+            <b>Loại Hóa đơn</b>
+          </th>
+          <th style="width: 150px;">
+            <b>Mẫu Hóa đơn</b>
+          </th>
+          <th style="width: 100px;">
+            <b>Ký hiệu</b>
+          </th>
+          <th style="width: 100px;">
+            <b>Số</b>
+          </th>
+          <th style="width: 150px;">
+            <b>Ngày hóa đơn</b>
+          </th>
+          <th>
+            <b>Tên người mua</b>
+          </th>
+          <th style="width: 120px;">
+            <b>#</b>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{$ctrl.invoice.invoiceTypeCode}}</td>
+          <td>{{$ctrl.invoice.templateNo}}</td>
+          <td>{{$ctrl.invoice.serialNo}}</td>
+          <td>{{$ctrl.invoice.invoiceNo}}</td>
+          <td>{{$ctrl.invoice.invoiceDate | date:'dd/MM/yyyy'}}</td>
+          <td>{{$ctrl.invoice.buyerFullName}}</td>
+          <td>
+            <button ng-click="$ctrl.exportPdf()" type="button" class="btn btn-link text-orange btn-xs no-padding hint--left" aria-label="In hóa đơn pdf"><i class="icon-file-pdf"></i></button>
+            <button ng-click="$ctrl.exportXml()" type="button" class="btn btn-link text-orange btn-xs no-padding hint--left" aria-label="In hóa đơn xml"><i class="icon-embed2"></i></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="overlay" ng-if="$ctrl.loading">
+      <i class="fa fa-spinner text-indigo fa-spin"></i>
+    </div>
+  </div>
+</div>

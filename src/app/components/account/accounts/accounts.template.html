@@ -1,0 +1,116 @@
+<div class="page-header">
+    <div class="page-header-content">
+        <div class="page-title page-title-custom">
+            <h4>
+                <a ui-sref="dashboard">
+                    <i class="icon-arrow-left52 position-left"></i>
+                </a>
+                <span>Tài khoản</span>
+            </h4>
+            <ul class="breadcrumb breadcrumb-caret position-right">
+                <li>
+                    <a ui-sref="dashboard">Trang chủ</a>
+                </li>
+                <li class="active">Tài khoản</li>
+            </ul>
+        </div>
+        <div class="heading-elements not-collapsible">
+            <div class="heading-btn-group">
+                <!-- <button ng-if="$ctrl.checkPermisson('add')" type="button" ng-click="$ctrl.state.go('account.add')" class="btn bg-success btn-labeled heading-btn legitRipple"><b><i class="icon-pencil7"></i></b> Tạo mới</button> -->
+                <button type="button" ng-click="$ctrl.state.go('account.add')" class="btn bg-success btn-labeled heading-btn legitRipple">
+                    <b>
+                        <i class="icon-pencil7"></i>
+                    </b> Tạo mới</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel panel-white">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-xs-3 col-sm-2 col-md-1">
+                <select class="form-control" ng-model="$ctrl.paging.size" ng-change="$ctrl.getAccounts()" ng-options="size for size in $ctrl.sizes">
+                </select>
+            </div>
+            <div class="col-xs-9 col-sm-offset-4 col-sm-6 col-md-offset-7 col-md-4">
+                <div class="has-feedback has-feedback-right">
+                    <input ng-model="$ctrl.paging.q" ng-model-options="{ debounce: 1000 }" ng-change="$ctrl.getAccounts()" type="text" class="form-control"
+                        placeholder="Tìm kiếm" />
+                    <div class="form-control-feedback">
+                        <i class="icon-search4 text-muted text-size-base"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-custom">
+            <thead>
+                <tr class="info">
+                    <th style="width: 150px">Tên đăng nhập</th>
+                    <th>Tên đầy đủ</th>
+                    <th style="width: 130px;">Tài khoản ERP</th>
+                    <th style="width: 130px;">Ngày tạo</th>
+                    <th style="width: 250px">Quyền</th>
+                    <th style="width: 130px;">#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="account in $ctrl.accounts track by $index">
+                    <td>{{account.userName}}</td>
+                    <td>{{account.fullName}}</td>
+                    <td>{{account.erpAccount}}</td>
+                    <td>{{account.createAt | date:'dd/MM/yyyy'}}</td>
+                    <td>{{account.roles}}</td>
+                    <td class="text-center">
+                        <button ng-click="$ctrl.edit($index)" type="button" class="btn btn-link text-orange btn-xs no-padding hint--left"
+                            aria-label="Sửa tài khoản">
+                            <i class="icon-pencil"></i>
+                        </button>
+                        <button ng-if="account.status !=='Active'" ng-click="$ctrl.remove($index)" type="button"
+                            class="btn btn-link text-danger-600 btn-xs no-padding hint--left" aria-label="Xóa tài khoản">
+                            <i class="icon-trash"></i>
+                        </button>
+                        <!-- <button ng-if="$ctrl.checkPermisson('edit')" ng-click="$ctrl.edit($index)" type="button" class="btn btn-link text-orange btn-xs no-padding hint--left"
+                        aria-label="Sửa tài khoản"><i class="icon-pencil"></i></button>
+                    <button ng-show="$ctrl.checkPermisson('delete')" ng-if="account.status !=='Active'" ng-click="$ctrl.remove($index)" type="button" class="btn btn-link text-danger-600 btn-xs no-padding hint--left" aria-label="Xóa tài khoản"><i class="icon-trash"></i></button> -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="panel-body">
+        <div class="row visible-sm-block visible-xs-block">
+            <div class="col-sm-6 text-center">
+                <p class="form-control-static">Từ {{($ctrl.paging.page - 1) * $ctrl.paging.size + 1}} đến {{$ctrl.paging.page * $ctrl.paging.size > $ctrl.totalItems
+                    ? $ctrl.totalItems : $ctrl.paging.page * $ctrl.paging.size}} của {{$ctrl.totalItems}} kết quả
+                </p>
+            </div>
+            <div class="col-sm-6 text-center">
+                <ul uib-pagination total-items="$ctrl.totalItems" ng-model="$ctrl.paging.page" max-size="2" class="pagination pagination-flat pagination-rounded pagination-sm"
+                    boundary-links="true" force-ellipses="true" items-per-page="$ctrl.paging.size" next-text="&rsaquo;" last-text="&raquo;"
+                    first-text="&laquo;" previous-text="&lsaquo;" ng-change="$ctrl.getAccounts()"></ul>
+            </div>
+        </div>
+
+        <div class="row hidden-sm hidden-xs">
+            <div class="col-md-6">
+                <p class="form-control-static">Từ {{($ctrl.paging.page - 1) * $ctrl.paging.size + 1}} đến {{$ctrl.paging.page * $ctrl.paging.size > $ctrl.totalItems
+                    ? $ctrl.totalItems : $ctrl.paging.page * $ctrl.paging.size}} của {{$ctrl.totalItems}} kết quả
+                </p>
+            </div>
+            <div class="col-md-6 text-right">
+                <ul uib-pagination total-items="$ctrl.totalItems" ng-model="$ctrl.paging.page" max-size="2" class="pagination pagination-flat pagination-rounded pagination-sm"
+                    boundary-links="true" force-ellipses="true" next-text="&rsaquo;" last-text="&raquo;" first-text="&laquo;"
+                    previous-text="&lsaquo;" items-per-page="$ctrl.paging.size" ng-change="$ctrl.getAccounts()"></ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" ng-if="$ctrl.loading">
+        <i class="fa fa-spinner text-indigo fa-spin"></i>
+    </div>
+</div>
